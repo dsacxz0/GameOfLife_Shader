@@ -1,0 +1,40 @@
+const float rows = 250.0;
+const float cols = 60.0;
+
+vec4 main( std::Texture2d tex1)
+{
+    vec2 iResolution = std::getRenderTargetSize();
+    vec2 fragCoord = fragment(std::getFragmentCoord().xy);
+	vec2 pixelSize = vec2(iResolution.x/rows,iResolution.y/cols);
+	vec2 c = floor(fragCoord.xy/pixelSize.xy);
+  	vec2 coord = c*pixelSize.xy;
+	vec2 uv = vec2(coord.x/iResolution.x,1.0-coord.y/iResolution.y);
+	float iTime = std::getTime();
+    
+    vec4 color = vec4(1.0, 1.0, 1.0, 1.0);
+    float neighbors = 0.0;
+
+	for(float i = -pixelSize.x; i <= pixelSize.x; i += pixelSize.x)
+    {
+        for( float j = -pixelSize.y; j <= pixelSize.y; j += pixelSize.y)
+        {
+        	vec2 offset = vec2(i, j) / iResolution.xy;		
+        	vec4 lookup = tex1.sample(uv + offset); 
+        	if(lookup.y < 0.5 && lookup!=vec4(0.0,0.0,0.0,1.0)){
+				neighbors++;
+			}					
+        }
+    }
+
+    float cell = tex1.sample(uv).x;
+    if(cell > 0.0) {
+        if(neighbors >= 3.0 && neighbors <= 4.0) {
+            color = vec4(1.0, 0.0, 0.0, 1.0);
+        }
+    } else if(neighbors > 2.0 && neighbors < 4.0) {
+    	color = vec4(1.0, 0.0, 0.0, 1.0);
+    }
+
+	
+	return color;
+}

@@ -1,0 +1,25 @@
+const float rows = 125.0;
+const float cols = 30.0;
+
+vec4 main( std::Texture2d tex1)
+{
+  vec2 iResolution = std::getRenderTargetSize();
+  vec2 fragCoord = fragment(std::getFragmentCoord().xy);
+  vec2 pixelSize = vec2(iResolution.x/rows,iResolution.y/cols);
+  vec2 c = mod(fragCoord.xy,pixelSize.xy);
+  vec2 coord = c*pixelSize.xy;
+	vec2 uv = fragment(std::getVertexTexCoord());
+	float iTime = std::getTime();
+    
+  vec4 color;
+
+	if(c.x < 2.0 || c.x > pixelSize.x - 2.0){
+    color = vec4(0.0,0.0,0.0,1.0);
+  }
+  else{
+    color = tex1.sample(uv);
+  }
+	
+	return color;
+}
+

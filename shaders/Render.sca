@@ -1,0 +1,16 @@
+const float rows = 10.0;
+const float cols = 10.0;
+
+vec4 main(std::Texture2d tex1, std::Texture2d tex2, float beat)
+{ 
+  vec2 uv = fragment(std::getVertexTexCoord());
+  vec4 color = tex1.sample(uv);
+  
+  if(float(beat) == 1.0){
+		if(tex2.sample(uv).y<0.5){
+			color = vec4(1.0, 0.0, 0.0, 1.0);
+		}
+	}
+	return color;
+}
+

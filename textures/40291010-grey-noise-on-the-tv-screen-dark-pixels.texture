@@ -1,0 +1,36 @@
+{
+  "modelName": "texture",
+  "name": "40291010-grey-noise-on-the-tv-screen-dark-pixels",
+  "identifier": "texture:4408-073b1280-a41b-4db9-80cd-976b250cb400",
+  "alphaPremultiplicationMode": "should_premultiply",
+  "assetDataHash": "8894648b2d3a20acdd13ad51314d2c07",
+  "assetLocator": "textures/40291010-grey-noise-on-the-tv-screen-dark-pixels.jpg",
+  "colorEncoding": "linear",
+  "compressionQuality": "high",
+  "coordMapping": "none",
+  "excludeDuringExport": false,
+  "excludeFromPackage": false,
+  "filter": "bilinear",
+  "hasOfflineMipmaps": false,
+  "height": 1024,
+  "importIssues": {},
+  "isExternalAsset": true,
+  "smartTextureTargetSizeLimit": "largest",
+  "targetSize": "largest",
+  "uWrapMode": "clamp",
+  "vWrapMode": "clamp",
+  "width": 1024,
+  "children": [
+    {
+      "modelName": "data_texture_metadata_model",
+      "name": "data_texture_metadata_model0",
+      "assetDataHash": "8894648b2d3a20acdd13ad51314d2c07",
+      "colorCount": 256,
+      "detectedAlphaChannel": "no_alpha",
+      "detectedOriginalFormat": "jpeg",
+      "entropyOfDistribution": 7.73492247335757,
+      "pixelsHigh": 1024,
+      "pixelsWide": 1024
+    }
+  ]
+}
